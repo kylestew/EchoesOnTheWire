@@ -17,6 +17,11 @@
 
     $ ssh chip@chip1.local
 
+
+# installing Python
+Make sure you are on python 3.4 or greater
+
+
 # installing GPIO library
 https://github.com/xtacocorex/CHIP_IO
 
@@ -25,9 +30,9 @@ sudo apt-get install git build-essential python-dev python-pip flex bison chip-d
 sudo pip install CHIP-IO
 
 # Installing OSC library
-https://pypi.python.org/pypi/python-osc
+https://github.com/attwad/python-osc
 
-pip install pyosc
+sudo pip3 install python-osc
 
 
 # Running final build
@@ -35,7 +40,7 @@ pip install pyosc
 sudo /usr/bin/python /home/chip/spookyphone/hardware-io/phone_in.py && /usr/bin/pd -nogui -rt /home/chip/spookyphone/patch/main.pd
 
 
-# Updating init.d service for PHONE IO
+# Updating systemd service for PHONE IO
 
 sudo cp /home/chip/spookyphone/phoneio.service /etc/systemd/system/phoneio.service
 
@@ -48,9 +53,10 @@ systemctl status phoneio
 sudo systemctl stop phoneio
 
 
-# Updating init.d service for PATCH
+# Updating systemd service for PATCH
 
-sudo cp spookyphone.service /etc/systemd/system/spookyphone.service
+sudo cp /home/chip/spookyphone/spookyphone.service /etc/systemd/system/spookyphone.service
+
 sudo systemctl daemon-reload
 sudo systemctl enable spookyphone.service
 sudo systemctl start spookyphone
@@ -59,7 +65,3 @@ systemctl status spookyphone
 
 # Stopping
 sudo systemctl stop spookyphone
-
-
-
-169.254.5.61

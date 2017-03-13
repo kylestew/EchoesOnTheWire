@@ -2,7 +2,7 @@
 Description=phone input and pure data patch
 
 [Service]
-ExecStart=/usr/bin/python3 /home/chip/spookyphone/hardware-io/phone_in.py
+ExecStart=/usr/bin/pd -nogui -rt /home/chip/spookyphone/osc-test.pd
 Type=idle
 
 [Install]
