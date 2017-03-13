@@ -1,0 +1,9 @@
+[Unit]
+Description=phone input and pure data patch
+
+[Service]
+ExecStart=/usr/bin/python /home/chip/spookyphone/hardware-io/phone_in.py
+Type=idle
+
+[Install]
+WantedBy=multi-user.target
