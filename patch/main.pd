@@ -1,4 +1,4 @@
-#N canvas 1144 179 1105 770 10;
+#N canvas 218 10 1105 691 10;
 #X obj 13 176 adc~;
 #N canvas 0 22 450 300 (subpatch) 0;
 #X array mic_in 100 float 5;
@@ -12,26 +12,23 @@
 -1;
 #X obj 13 199 *~ 10;
 #X obj 63 199 metro 100;
-#X obj 355 522 sound_out;
-#X obj 290 502 sound_in;
+#X obj 215 513 sound_out;
 #X obj 209 36 loadbang;
 #X obj 209 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 13 222 tabwrite~ mic_in;
-#X obj 309 424 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 215 424 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 309 445 moses 1;
-#X obj 309 467 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 215 445 moses 1;
+#X obj 215 467 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 348 467 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 254 467 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 343 412 O: off hook (on);
-#X text 343 423 X: on hook (off);
-#X text 326 466 on;
-#X text 366 465 off;
-#X obj 355 500 delay 100;
-#X msg 400 103 \; num_sound_files 0 \; max_num_sound_files 20 \; reset
-0 \;;
+#X text 234 412 O: off hook (on);
+#X text 234 423 X: on hook (off);
+#X text 232 466 on;
+#X text 272 465 off;
+#X obj 215 491 delay 100;
 #X msg 630 165 \; pd audio-dialog 2 0 0 0 1 0 0 0 2 0 0 0 1 0 0 0 44100
 25 -1 64;
 #X obj 556 103 delay 2000;
@@ -43,32 +40,43 @@
 #X obj 312 327 route dialed;
 #X obj 214 279 route list;
 #X obj 215 327 route handset;
-#X floatatom 215 349 5 0 0 0 - - -, f 5;
-#X floatatom 312 349 5 0 0 0 - - -, f 5;
+#X floatatom 215 349 5 0 0 0 - - -;
+#X floatatom 312 349 5 0 0 0 - - -;
 #X msg 362 193;
+#X obj 338 365 sel 0 1 2 3 4 5 6 7 8 9;
+#X obj 338 461 spigot;
+#X obj 371 439 == 0;
+#X obj 338 482 sound_in;
+#X msg 400 103 \; num_sound_files 0 \; max_num_sound_files 20 \; reset
+0 \; initial_filter 27 \;;
 #X connect 0 0 3 0;
 #X connect 2 0 4 0;
-#X connect 3 0 9 0;
-#X connect 4 0 9 0;
-#X connect 7 0 19 0;
-#X connect 7 0 21 0;
-#X connect 7 0 25 0;
-#X connect 7 0 32 0;
+#X connect 3 0 8 0;
+#X connect 4 0 8 0;
+#X connect 6 0 35 0;
+#X connect 6 0 19 0;
+#X connect 6 0 23 0;
+#X connect 6 0 30 0;
+#X connect 9 0 10 0;
+#X connect 9 0 33 0;
 #X connect 10 0 11 0;
-#X connect 11 0 12 0;
-#X connect 11 1 13 0;
-#X connect 12 0 6 0;
-#X connect 12 0 18 0;
-#X connect 13 0 6 1;
-#X connect 13 0 5 1;
-#X connect 18 0 5 0;
-#X connect 21 0 22 0;
-#X connect 21 0 20 0;
+#X connect 10 1 12 0;
+#X connect 11 0 17 0;
+#X connect 12 0 5 1;
+#X connect 12 0 34 1;
+#X connect 17 0 5 0;
+#X connect 19 0 20 0;
+#X connect 19 0 18 0;
+#X connect 22 0 24 0;
+#X connect 23 0 22 0;
 #X connect 24 0 26 0;
-#X connect 25 0 24 0;
-#X connect 26 0 28 0;
-#X connect 27 0 31 0;
-#X connect 28 0 29 0;
-#X connect 28 0 27 0;
-#X connect 29 0 30 0;
-#X connect 30 0 10 0;
+#X connect 25 0 29 0;
+#X connect 26 0 27 0;
+#X connect 26 0 25 0;
+#X connect 27 0 28 0;
+#X connect 28 0 9 0;
+#X connect 29 0 31 0;
+#X connect 31 0 32 0;
+#X connect 31 0 12 0;
+#X connect 32 0 34 0;
+#X connect 33 0 32 1;
