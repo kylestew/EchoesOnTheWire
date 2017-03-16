@@ -2,7 +2,7 @@
 Description=phone input and pure data patch
 
 [Service]
-ExecStart=/usr/bin/pd -nogui -rt /home/chip/spookyphone/osc-test.pd
+ExecStart=/usr/bin/pd -nogui -rt /home/chip/spookyphone/patch/main.pd
 Type=idle
 
 [Install]
