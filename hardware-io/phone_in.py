@@ -95,7 +95,7 @@ class SpookyPhone(object):
 		if GPIO.input(channel):
 			# high = disengaged
 			number = self.pulseCount
-			if number == 10:
+			if number >= 10: # anything past 0 becomes 0 (must be error)
 				number = 0
 			logging.debug('number dialed: ' + str(number))
 			self.client.send_message("/dialed", number)
