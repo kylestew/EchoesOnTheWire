@@ -1,21 +1,10 @@
-#N canvas 638 169 1105 691 10;
+#N canvas 18 9 1227 691 10;
 #X obj 13 176 adc~;
-#N canvas 0 22 450 300 (subpatch) 0;
-#X array mic_in 100 float 5;
-#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0;
-#X coords 0 1 99 -1 200 140 1;
-#X restore 4 17 graph;
 #X obj 63 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 13 199 *~ 10;
 #X obj 63 199 metro 100;
-#X obj 215 513 sound_out;
-#X obj 209 36 loadbang;
-#X obj 209 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 215 543 sound_out;
 #X obj 13 222 tabwrite~ mic_in;
 #X obj 215 424 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -28,29 +17,16 @@
 #X text 234 423 X: on hook (off);
 #X text 232 466 on;
 #X text 272 465 off;
-#X obj 215 491 delay 100;
-#X msg 630 165 \; pd audio-dialog 2 0 0 0 1 0 0 0 2 0 0 0 1 0 0 0 44100
-25 -1 64;
-#X obj 556 103 delay 2000;
-#X msg 556 165 \; pd dsp 1;
-#X text 634 143 bring audio in/out online for external USB source;
-#X obj 215 224 netreceive -u -b;
-#X msg 215 196 listen 6448;
-#X obj 215 252 oscparse;
-#X obj 312 327 route dialed;
-#X obj 214 279 route list;
-#X obj 215 327 route handset;
-#X floatatom 215 349 5 0 0 0 - - -, f 5;
-#X floatatom 312 349 5 0 0 0 - - -, f 5;
+#X obj 215 521 delay 100;
+#X floatatom 215 349 5 0 0 0 - - -;
+#X floatatom 312 349 5 0 0 0 - - -;
 #X obj 411 511 sel 0 1 2 3 4 5 6 7 8 9;
 #X obj 411 483 spigot;
 #X obj 330 600 sound_in;
-#X msg 400 103 \; num_sound_files 0 \; max_num_sound_files 20 \; reset
-0 \; initial_filter 27 \;;
 #X text 483 460 only dial when off hook;
 #X obj 330 578 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X floatatom 458 484 5 0 0 0 - - -, f 5;
+#X floatatom 458 484 5 0 0 0 - - -;
 #X obj 445 459 == 0;
 #X msg 110 313 0;
 #X msg 156 314 1;
@@ -59,39 +35,178 @@
 #X text 109 296 0 = off hook;
 #X text 560 507 don't use #9 pr #8 \, sometimes dialing 0 gives a 9
 so lets count the two as a start record intention from the user;
-#X connect 0 0 3 0;
-#X connect 2 0 4 0;
-#X connect 3 0 8 0;
-#X connect 4 0 8 0;
-#X connect 6 0 33 0;
-#X connect 6 0 19 0;
+#X floatatom 578 301 5 0 0 0 - - -;
+#X msg 550 276 0;
+#X msg 578 276 1;
+#X msg 605 276 2;
+#X msg 633 276 3;
+#X msg 661 276 4;
+#X msg 689 276 5;
+#X msg 716 276 6;
+#X msg 744 276 7;
+#X msg 772 276 8;
+#X msg 799 276 9;
+#X obj 375 577 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 308 576 on;
+#X text 393 575 off;
+#X obj 672 387 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 721 389 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array mic_in 100 float 5;
+#A 0 0.13245 0.10712 0.0793481 0.0497452 0.0204474 -0.00549333 -0.0268563
+-0.0451674 -0.0601215 -0.0738548 -0.0872829 -0.100101 -0.108036 -0.108341
+-0.097354 -0.0756859 -0.0451674 -0.0128178 0.0161748 0.0366222 0.04944
+0.0579852 0.0619526 0.0640889 0.0631733 0.0585955 0.0515763 0.0439467
+0.0357067 0.0299081 0.0262459 0.0250252 0.0241096 0.0219733 0.019837
+0.0167852 0.0152593 0.0177007 0.0231941 0.0299081 0.0341807 0.0347911
+0.03296 0.0299081 0.0289926 0.0314341 0.0369274 0.044557 0.0524918
+0.0604266 0.0668355 0.0708029 0.0708029 0.0656148 0.0555437 0.0418104
+0.0271615 0.0109867 -0.00518815 -0.019837 -0.0335704 -0.0427259 -0.0482192
+-0.0506607 -0.0515763 -0.0552385 -0.0607318 -0.0680563 -0.0753807 -0.0830103
+-0.0915555 -0.100101 -0.110172 -0.118107 -0.12421 -0.126347 -0.125126
+-0.1236 -0.119327 -0.112613 -0.10651 -0.103458 -0.108036 -0.1236 -0.149236
+-0.179754 -0.208136 -0.228584 -0.240486 -0.249031 -0.25605 -0.261238
+-0.262154 -0.252083 -0.23072 -0.199896 -0.166936 -0.137028 -0.112003
+-0.0924711;
+#X coords 0 1 99 -1 200 140 1;
+#X restore 24 33 graph;
+#X obj 676 348 sel 2;
+#X msg 771 385 symbol exotica1;
+#X obj 1061 257 table special_option_exotica1;
+#X obj 1071 287 table special_option_exotica2;
+#X obj 882 397 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 931 399 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 981 395 symbol exotica2;
+#X obj 886 358 sel 3;
+#X obj 1092 407 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1141 409 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1191 405 symbol radio1;
+#X obj 1096 368 sel 4;
+#X obj 1081 307 table special_option_radio1;
+#X obj 1089 504 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1138 506 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1188 502 symbol radio2;
+#X obj 1093 465 sel 5;
+#X obj 1092 327 table special_option_radio2;
+#X obj 1092 431 special_sound_out;
+#X obj 498 586 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1089 528 special_sound_out;
+#X obj 672 411 special_sound_out;
+#X obj 882 421 special_sound_out;
+#X obj 249 46 loadbang;
+#X obj 249 27 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 670 175 \; pd audio-dialog 2 0 0 0 1 0 0 0 2 0 0 0 1 0 0 0 44100
+25 -1 64;
+#X obj 596 113 delay 2000;
+#X msg 596 175 \; pd dsp 1;
+#X text 674 153 bring audio in/out online for external USB source;
+#X obj 255 234 netreceive -u -b;
+#X msg 255 206 listen 6448;
+#X obj 255 262 oscparse;
+#X obj 254 289 route list;
+#X msg 440 113 \; num_sound_files 0 \; max_num_sound_files 20 \; reset
+0 \; initial_filter 27 \;;
+#X obj 302 317 route dialed;
+#X obj 205 317 route handset;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 6 0 7 0;
 #X connect 6 0 23 0;
-#X connect 9 0 10 0;
-#X connect 9 0 37 0;
-#X connect 10 0 11 0;
-#X connect 10 1 12 0;
-#X connect 11 0 17 0;
-#X connect 12 0 5 1;
-#X connect 12 0 32 1;
-#X connect 17 0 5 0;
-#X connect 19 0 20 0;
-#X connect 19 0 18 0;
-#X connect 22 0 24 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
+#X connect 8 0 14 0;
+#X connect 9 0 4 1;
+#X connect 9 0 19 1;
+#X connect 9 0 45 0;
+#X connect 9 0 52 0;
+#X connect 9 0 56 0;
+#X connect 9 0 61 0;
+#X connect 14 0 4 0;
+#X connect 15 0 6 0;
+#X connect 16 0 18 0;
+#X connect 17 0 21 0;
+#X connect 17 1 66 0;
+#X connect 17 2 41 0;
+#X connect 17 3 41 0;
+#X connect 17 4 41 0;
+#X connect 17 5 41 0;
+#X connect 17 6 66 0;
+#X connect 17 7 66 0;
+#X connect 17 8 66 0;
+#X connect 17 9 21 0;
+#X connect 17 10 21 0;
+#X connect 18 0 17 0;
+#X connect 18 0 47 0;
+#X connect 18 0 54 0;
+#X connect 18 0 58 0;
+#X connect 18 0 63 0;
+#X connect 21 0 19 0;
+#X connect 21 0 4 1;
+#X connect 23 0 18 1;
 #X connect 23 0 22 0;
-#X connect 24 0 26 0;
-#X connect 25 0 29 0;
-#X connect 26 0 27 0;
-#X connect 26 0 25 0;
-#X connect 27 0 28 0;
-#X connect 28 0 9 0;
-#X connect 29 0 31 0;
-#X connect 30 0 35 0;
-#X connect 30 9 35 0;
-#X connect 30 10 35 0;
+#X connect 24 0 15 0;
+#X connect 25 0 15 0;
+#X connect 26 0 16 0;
+#X connect 30 0 16 0;
 #X connect 31 0 30 0;
-#X connect 35 0 32 0;
-#X connect 37 0 31 1;
-#X connect 37 0 36 0;
-#X connect 38 0 28 0;
-#X connect 39 0 28 0;
-#X connect 40 0 29 0;
+#X connect 32 0 30 0;
+#X connect 33 0 30 0;
+#X connect 34 0 30 0;
+#X connect 35 0 30 0;
+#X connect 36 0 30 0;
+#X connect 37 0 30 0;
+#X connect 38 0 30 0;
+#X connect 39 0 30 0;
+#X connect 40 0 30 0;
+#X connect 41 0 19 1;
+#X connect 41 0 4 1;
+#X connect 44 0 48 0;
+#X connect 44 0 68 0;
+#X connect 45 0 68 1;
+#X connect 47 0 44 0;
+#X connect 47 1 45 0;
+#X connect 48 0 68 2;
+#X connect 51 0 53 0;
+#X connect 51 0 69 0;
+#X connect 52 0 69 1;
+#X connect 53 0 69 2;
+#X connect 54 0 51 0;
+#X connect 54 1 52 0;
+#X connect 55 0 57 0;
+#X connect 55 0 65 0;
+#X connect 56 0 65 1;
+#X connect 57 0 65 2;
+#X connect 58 0 55 0;
+#X connect 58 1 56 0;
+#X connect 60 0 62 0;
+#X connect 60 0 67 0;
+#X connect 61 0 67 1;
+#X connect 62 0 67 2;
+#X connect 63 0 60 0;
+#X connect 63 1 61 0;
+#X connect 66 0 8 0;
+#X connect 70 0 80 0;
+#X connect 70 0 73 0;
+#X connect 70 0 77 0;
+#X connect 73 0 74 0;
+#X connect 73 0 72 0;
+#X connect 76 0 78 0;
+#X connect 77 0 76 0;
+#X connect 78 0 79 0;
+#X connect 79 0 82 0;
+#X connect 79 0 81 0;
+#X connect 81 0 16 0;
+#X connect 82 0 15 0;
