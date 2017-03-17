@@ -1,10 +1,10 @@
-#N canvas 593 101 662 542 10;
+#N canvas 593 101 824 628 10;
 #X obj 56 -13 inlet;
 #X obj 56 45 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 204 54 10;
 #X msg 243 53 \$1;
-#X floatatom 282 53 5 0 0 0 - - -;
+#X floatatom 282 53 5 0 0 0 - - -, f 5;
 #X obj 218 27 r num_sound_files;
 #X obj 99 403 dac~ 1 2;
 #X msg 146 44 stop;
@@ -23,8 +23,8 @@
 #X text 69 2 off hook;
 #X obj 158 89 pick_and_play 2;
 #X obj -17 161 +~;
-#X floatatom -18 111 5 0 0 0 - - -;
-#X floatatom 20 111 5 0 0 0 - - -;
+#X floatatom -18 111 5 0 0 0 - - -, f 5;
+#X floatatom 20 111 5 0 0 0 - - -, f 5;
 #X msg -18 88 350;
 #X msg 20 88 440;
 #X obj -18 134 osc~;
@@ -46,12 +46,12 @@
 #X obj 141 199 *~ 0.6;
 #X obj 156 229 *~ 0.02;
 #X obj 157 148 *~ 0.4;
-#X msg 102 351 0.7;
 #X obj -1 289 ring_modulate_and_mix~;
 #X obj -2 316 moving_bandpass~;
+#X msg 102 351 4;
 #X connect 0 0 1 0;
 #X connect 1 0 21 0;
-#X connect 1 0 45 0;
+#X connect 1 0 47 0;
 #X connect 1 0 31 0;
 #X connect 1 0 32 0;
 #X connect 1 0 39 0;
@@ -69,7 +69,7 @@
 #X connect 18 0 7 0;
 #X connect 21 0 40 0;
 #X connect 22 0 33 0;
-#X connect 22 0 46 0;
+#X connect 22 0 45 0;
 #X connect 23 0 27 0;
 #X connect 24 0 28 0;
 #X connect 25 0 23 0;
@@ -87,7 +87,7 @@
 #X connect 34 0 43 0;
 #X connect 35 0 29 0;
 #X connect 36 0 42 0;
-#X connect 37 0 46 1;
+#X connect 37 0 45 1;
 #X connect 38 0 35 0;
 #X connect 39 0 40 1;
 #X connect 40 0 44 0;
@@ -95,6 +95,6 @@
 #X connect 42 0 37 0;
 #X connect 43 0 37 1;
 #X connect 44 0 36 1;
-#X connect 45 0 29 1;
-#X connect 46 0 47 0;
-#X connect 47 0 35 1;
+#X connect 45 0 46 0;
+#X connect 46 0 35 1;
+#X connect 47 0 29 1;

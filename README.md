@@ -8,7 +8,7 @@
 # Get on wifi
 
     $ nmcli device wifi list
-    $ sudo nmcli device wifi connect 'Lestats' ifname wlan0
+    $ sudo nmcli device wifi connect 'Young Hickory WiFi' password 'hotcoffee' ifname wlan0
     $ nmcli device status
     $ sudo ifconfig
 
