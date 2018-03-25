@@ -1,4 +1,8 @@
 
+
+![Brain Transplant](cover.jpg)
+
+
 # Connecting via USB OTG
 (only when you need to get the wifi working)
 
